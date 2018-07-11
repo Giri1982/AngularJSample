@@ -1,15 +1,34 @@
 <div>
-    Customer Name :-<input [(ngModel)]="customerobj.CustomerName" id="Text1" type="text" />
-    Customer Code :-<input [(ngModel)]="customerobj.CustomerCode" id="Text1" type="text" />
-    Customer Amount :-<input [(ngModel)]="customerobj.CustomerAmount" id="Text1" type="text" /><br />
-    <input type="button" name="Submit" value="Submit">
-</div>
-<br />
-<br />
-<br />
-<div>
- Customer Name                      | Customer Code                     | Customer Amount 
-{{customerobj.CustomerName}}        {{customerobj.CustomerCode}}       {{customerobj.CustomerAmount}}<br />
+        <!--Customer Name object to UI:-<input [ngModel]="customerobj.CustomerName" id="Text1" type="text" /><br />
+        Customer Name UI to the object:-<input (input)="customerobj.CustomerName=$event.target.value" id="Text1" type="text" /><br />
+        Customer Name 2 way :-<input [ngModel]="customerobj.CustomerName" (input)="customerobj.CustomerName=$event.target.value" id="Text1" type="text" /><br />-->
+        Customer Name  :-<input [(ngModel)]="currentCustomer.CustomerName" id="Text1" type="text" /><br />
+        Customer Code :-<input [(ngModel)]="currentCustomer.CustomerCode" id="Text1" type="text" /><br />
+        Customer Amount :-<input [(ngModel)]="currentCustomer.CustomerAmount" id="Text1" type="text" />
+        <br />
+        <br />
+        <br />
+        <input type="button" (click)="Add()"  value="Add Customer"/>
+        <input type="button" (click)="Update()" value="Update Customer" />
+        <input type="button" (click)="Clear()" value="Cancel" /><br />
+        <br />
+        <br />
+        <b>{{currentCustomer.CustomerName}}</b><br />
+        {{currentCustomer.CustomerCode}}<br />
+        {{currentCustomer.CustomerAmount}}<br />
+        <table>
+                
+            <tr>
+                <td>Name</td>
+                <td>Code</td>
+                <td>Amount</td>
+            </tr>
+            <tr  *ngFor="let cust of customers">
+                <td>{{cust.CustomerName}}</td>
+                <td>{{cust.CustomerCode}}</td>
+                <td>{{cust.CustomerAmount}}</td>
+                <td><a href="#" (click)="Select(cust)">Select</a></td>
+            </tr>
+        </table>
+    </div>
     
-    
-</div>
