@@ -2,26 +2,59 @@
         <!--Customer Name object to UI:-<input [ngModel]="customerobj.CustomerName" id="Text1" type="text" /><br />
         Customer Name UI to the object:-<input (input)="customerobj.CustomerName=$event.target.value" id="Text1" type="text" /><br />
         Customer Name 2 way :-<input [ngModel]="customerobj.CustomerName" (input)="customerobj.CustomerName=$event.target.value" id="Text1" type="text" /><br />-->
-        Customer Name  :-<input [(ngModel)]="currentCustomer.CustomerName" id="Text1" type="text" /><br />
-        Customer Code :-<input [(ngModel)]="currentCustomer.CustomerCode" id="Text1" type="text" /><br />
-        Customer Amount :-<input [(ngModel)]="currentCustomer.CustomerAmount" id="Text1" type="text" />
-        <br />
-        <br />
-        <br />
-        <input type="button" (click)="Add()"  value="Add Customer"/>
-        <input type="button" (click)="Update()" value="Update Customer" />
-        <input type="button" (click)="Clear()" value="Cancel" /><br />
-        <br />
+        <table style="padding: 30px">
+            <tr>
+                <td>
+                    Customer Name
+                </td>
+                <td>
+                    <input [(ngModel)]="currentCustomer.CustomerName" id="Text1" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Customer Code 
+                </td>
+                <td>
+                    <input [(ngModel)]="currentCustomer.CustomerCode" id="Text1" type="text" /><br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Customer Amount
+                </td>
+                    <td>
+                        <input [(ngModel)]="currentCustomer.CustomerAmount" id="Text1" type="text" />
+                    </td>
+                </tr>
+                <tr style="height: 30px"></tr>
+        <tr>
+            <td>
+                <input type="button" (click)="Add()"  value="Add Customer"/>
+            </td>
+        <td>
+            <input type="button" (click)="Update()" value="Update Customer" />
+        </td>
+        <td>
+            <input type="button" (click)="Clear()" value="Cancel" />
+        </td>
+    </tr>
+    </table>
+        <!-- <br />
         <br />
         <b>{{currentCustomer.CustomerName}}</b><br />
         {{currentCustomer.CustomerCode}}<br />
         {{currentCustomer.CustomerAmount}}<br />
-        <table>
-                
+      -->
+    
+        <app-gridui [grid-data] = "customers" [EntityName]="'Customer'" (Selected)= "Select($event)" >
+
+        </app-gridui>
+        <!-- <table style="padding: 30px">
             <tr>
                 <td>Name</td>
                 <td>Code</td>
-                <td>Amount</td>
+                <td>Amount</td>$
             </tr>
             <tr  *ngFor="let cust of customers">
                 <td>{{cust.CustomerName}}</td>
@@ -29,6 +62,6 @@
                 <td>{{cust.CustomerAmount}}</td>
                 <td><a href="#" (click)="Select(cust)">Select</a></td>
             </tr>
-        </table>
+        </table> -->
     </div>
     

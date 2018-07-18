@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Customer } from '../Model/Customer';
 
+
 @Component({
     selector: 'app-customer',
     templateUrl: '../UI/Customer.html',
@@ -28,6 +29,10 @@ export class CustomerComponent {
     }
     Add() {
         this.customers.push(this.currentCustomer);
+        // The Slice will create a copy of the customer object.
+        // This is required since, there is no change to the object there will no signal sent to the 
+        // Grid component
+        this.customers = this.customers.slice();
         this.currentCustomer = new Customer();
     }
 }
